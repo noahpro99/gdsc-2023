@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import Login from './pages/Login';
 import Landing from './pages/Landing';
-import Dashboard from './pages/Dashboard';
+import App from './pages/App';
 import { AuthProvider } from './context/auth';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Profile from './pages/Profile';
+import Signup from './pages/Signup';
 
 
 const root = ReactDOM.createRoot(
@@ -26,18 +28,34 @@ root.render(
             }
           />
           <Route
+            path='/signup'
+            element={
+              <Signup />
+            }
+          />
+          <Route
             path='/'
             element={
               <Landing />
             }
           />
           <Route
-            path='/dashboard'
+            path='/app'
             element={
-              <Dashboard />
-
+              <App />
             }
           />
+          <Route
+            path='/profile'
+            element={<Profile />}
+          />
+          <Route
+            path='*'
+            element={
+              <h1>404</h1>
+            }
+          />
+
 
 
         </Routes>
