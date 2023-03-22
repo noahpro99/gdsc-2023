@@ -3,10 +3,11 @@ import { auth, db } from '../firebase'
 import { DocumentData, doc, getDoc } from 'firebase/firestore'
 import NavBar from '../components/NavBar'
 import { useNavigate } from 'react-router-dom'
+import { User } from '../types'
 
 const Profile = () => {
 
-    const [user, setUser] = React.useState<DocumentData>()
+    const [user, setUser] = React.useState<User>()
     const [loading, setLoading] = React.useState(true)
     const navigate = useNavigate()
 
@@ -21,7 +22,7 @@ const Profile = () => {
         }
         getDoc(doc(db, 'users', auth.currentUser.uid)).then((doc) => {
             if (doc.exists()) {
-                setUser(doc.data())
+                setUser(doc.data() as User)
             } else {
                 console.log('No such document!')
             }
@@ -37,27 +38,27 @@ const Profile = () => {
         return <h1>Loading...</h1>
     }
     return (
-        <div className='flex flex-col items-center justify-center h-screen'>
-            <h1 className='text-3xl font-bold mb-5 mt-5'>Profile</h1>
-            <div className='flex flex-col items-center justify-center'>
-                {user && user.name && <h1 className='text-3xl font-bold mb-5 mt-5'>Name</h1>}
-                {user && user.name && <h1 className='text-3xl font-bold mb-5 mt-5'>{user.name}</h1>}
-                {user && user.email && <h1 className='text-3xl font-bold mb-5 mt-5'>Email</h1>}
-                {user && user.email && <h1 className='text-3xl font-bold mb-5 mt-5'>{user.email}</h1>}
+        <div className='flex flex-col min-h-screen bg-gray-500'>
+            {/* div for top right corner */}
+            <div className='flex flex-row justify-end w-full'>
+                <div className='flex flex-row justify-end bg-gray-700 px-4 m-4 rounded-lg shadow-md'>
+                    <img src='https://boring-avatars-api.vercel.app/api/avatar?size=40&variant=pixel' alt='avatar' />
+                    <button className='flex flex-row justify-center items-center w-24 h-12 m-4 text-black font-semibold bg-orange-500 rounded-lg shadow-md hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-gray-400 focus:ring-opacity-75' onClick={() => { auth.signOut(); navigate('/login') }}>
+                        Sign Out
+                    </button>
+                </div>
+            </div>
+            <div className='flex flex-col items-center w-full'>
+                <div className='flex flex-col items-center w-3/4 p-4 m-4 bg-gray-700 rounded-lg shadow-md'>
+                    <h1 className='text-2xl font-bold text-white'>Favorite Spots</h1>
+                    <div className='flex flex-row justify-center w-full'>
+                    </div>
+                </div>
 
             </div>
 
-            {/* logout button */}
-            <button
-                className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'
-                onClick={() => {
-                    auth.signOut();
-                    navigate('/login')
 
-                }}
-            >
-                Logout
-            </button>
+
 
 
             <NavBar location='profile' />

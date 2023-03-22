@@ -14,7 +14,7 @@ const Landing = () => {
                     <h1 className='text-3xl font-bold mb-5 mt-5 text-gray-900'>Welcome to ParkSpot</h1>
                     <Link to='/app'>
                         {/* extremely detailed animated border colors to app button */}
-                        <button className='rounded-full p-2 px-5 bg-gray-900 hover:bg-gray-700 text-white font-bold mt-5 border-2 border-gray-900 shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent hover:shadow-2xl'
+                        <button className='rounded-full p-2 px-5 bg-gray-900 text-white font-bold mt-5 border-2 border-gray-900 shadow-lg transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent hover:shadow-2xl'
                             type='submit'>Get Started</button>
                     </Link>
                 </div>

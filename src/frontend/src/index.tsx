@@ -8,6 +8,7 @@ import { AuthProvider } from './context/auth';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
+import LotDetails from './pages/LotDetails';
 
 
 const root = ReactDOM.createRoot(
@@ -49,6 +50,13 @@ root.render(
             path='/profile'
             element={<Profile />}
           />
+          <Route
+            path='/lot/:id'
+            element={
+              <LotDetails />
+            }
+          />
+
           <Route
             path='*'
             element={

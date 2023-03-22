@@ -3,8 +3,9 @@ import React from 'react'
 const LoadingWheel = () => {
     // spinning wheel
     return (
-        <div className='bg-red-500 rounded-full h-20 w-20 animate-spin'></div>
-
+        <div className='flex justify-center'>
+            <div className='animate-spin rounded-full h-32 w-32 border-b-2 border-orange-500'></div>
+        </div>
     )
 }
 
