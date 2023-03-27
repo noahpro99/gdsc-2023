@@ -2,5 +2,30 @@
     "conventionalCommits.scopes": [
         "frontend"
     ],
-    "discord.enabled": true
+    "discord.enabled": true,
+    "python.analysis.typeCheckingMode": "off",
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        ".",
+        "-p",
+        "test_*.py"
+    ],
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": true,
+    "python.testing.pytestArgs": [
+        "src"
+    ],
+    "sqltools.connections": [
+        {
+            "mysqlOptions": {
+                "authProtocol": "default"
+            },
+            "previewLimit": 50,
+            "server": "localhost",
+            "driver": "MySQL",
+            "name": "personaldb",
+            "connectString": "mysql+mysqldb://v9igurnzbiccz2l34vc2:pscale_pw_c9IPuGbHLIWzVUl0uQy141MwcDgcU1TBjL3CMIkVnIY@us-east.connect.psdb.cloud/personal-database?ssl={\"rejectUnauthorized\":false}&sslcert=/etc/ssl/certs/ca-certificates.crt"
+        }
+    ]
 }
