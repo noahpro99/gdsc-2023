@@ -1,6 +1,7 @@
 {
     "conventionalCommits.scopes": [
-        "frontend"
+        "frontend",
+        "deployment"
     ],
     "discord.enabled": true
 }
