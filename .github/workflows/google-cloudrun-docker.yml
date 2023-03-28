@@ -51,7 +51,7 @@ on:
 env:
   PROJECT_ID: gdsc-2023-381206 # TODO: update Google Cloud project id
   GAR_LOCATION: us-east1 # TODO: update Artifact Registry location
-  SERVICE: parking-service # TODO: update Cloud Run service name
+  SERVICE: parking-service-00001-guh # TODO: update Cloud Run service name
   REGION: us-east1 # TODO: update Cloud Run service region
 
 jobs:
