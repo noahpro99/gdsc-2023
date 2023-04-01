@@ -109,9 +109,9 @@ const LotDetails = () => {
 
           <div className="flex flex-row justify-center items-end">
             <div className={`flex flex-col items-center justify-end w-1/5 m-2 bg-gray-300 rounded-lg shadow-md`}
-              style={{ height: `${lot.spots / 2}rem` }}
+              style={{ height: `${lot.spots / Math.max(...lot?.forecasts) * 5}rem` }}
             >
-              <div className="text-lg font-bold">{lot.spots / Math.max(...lot?.forecasts) * 5}</div>
+              <div className="text-lg font-bold">{lot.spots}</div>
               <div className="text-sm">Current</div>
             </div>
             {lot?.forecasts.map((forecast, index) => {
