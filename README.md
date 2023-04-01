@@ -1,3 +1,8 @@
+YouTube 
+https://youtu.be/qF-jjjOtW6k
+
+Deployment https://parking-service-wbqwfbkqha-ue.a.run.app
+
 ## Project Setup
 
 Our project is a parking app that addresses the challenge of finding available parking spots in crowded areas. Our goal is to make it easier for drivers to find parking quickly and avoid wasting time searching for spots.
