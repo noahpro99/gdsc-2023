@@ -5,9 +5,10 @@ export interface Lot {
     description: string | null
     price: number | null
     rating: number | null
-    spots: number | null
+    spots: number
     lat: number
     lng: number
+    forecasts: number[]
 }
 
 

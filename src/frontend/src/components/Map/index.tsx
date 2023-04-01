@@ -18,8 +18,8 @@ const Map = ({ lots }: { lots: Lot[] }) => {
     libraries: ['places']
   });
   const center = {
-    lat: 37.818660,
-    lng: -79.319720
+    lat: 37.2296,
+    lng: -80.4139
   }
 
   if (!isLoaded || lots.length === 0) {
