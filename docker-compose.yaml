@@ -4,9 +4,11 @@ services:
   frontend:
     build:
       context: src/frontend/
-      dockerfile: dockerfile.prod  # production dockerfile
-      # dockerfile: dockerfile # development dockerfile
+      # dockerfile: dockerfile.prod  # production dockerfile
+      dockerfile: dockerfile # development dockerfile
       args:
         - PORT=8080
     ports:
       - "8080:8080"
+    volumes:
+      - ./src/frontend/src:/app/src  # development

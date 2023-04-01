@@ -7,12 +7,10 @@ import { collection, getDocs, query, where } from 'firebase/firestore'
 import { Lot } from '../types'
 import ParkingLotCard from '../components/ParkingLotCard'
 import LoadingWheel from '../components/LoadingWheel'
-
-
-
+import Header from '../components/Header'
 
 const App = () => {
-    const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const [loading, setLoading] = React.useState(true)
   const [lots, setLots] = React.useState<Lot[]>([])
@@ -22,11 +20,13 @@ const App = () => {
     // fetch user data from firebase db
     setLoading(true)
     async function fetchLots() {
-      const q = query(collection(db, "lots"), where("spots", ">", 0))
+      const q = query(collection(db, "lots"))
       const querySnapshot = await getDocs(q);
       const lots: Lot[] = []
       querySnapshot.forEach((doc) => {
-        lots.push(doc.data() as Lot)
+        let lot = doc.data() as Lot
+        lot.id = doc.id
+        lots.push(lot)
       });
       setLots(lots)
       console.log(lots)
@@ -41,18 +41,18 @@ const App = () => {
 
   }, [])
 
-    // redirect to login if not logged in
-    React.useEffect(() => {
-        if (!auth.currentUser) {
-            navigate('/login')
-        }
-    }, [navigate])
+  // redirect to login if not logged in
+  React.useEffect(() => {
+    if (!auth.currentUser) {
+      navigate('/login')
+    }
+  }, [navigate])
 
 
   const lotCards = (
     <ul>
       {lots.map((lot) => (
-        <li key={lot.id}>
+        <li key={lot.id} className="m-4 overscroll-auto">
           <ParkingLotCard lot={lot} />
         </li>
       ))}
@@ -60,21 +60,20 @@ const App = () => {
     </ul>
   )
 
-    return (
-      <div className='flex flex-col items-center min-h-screen bg-gray-500'>
-        <div className="text-5xl font-bold
-            bg-gradient-to-r bg-clip-text  text-transparent 
-            from-orange-500 via-orange-600 to-orange-500
-            animate-text p-2 m-2
-            ">
-          ParkSpot
-        </div>
-        {loading ? <LoadingWheel /> : (<Map lots={lots} />)}
-        {loading ? <></> : (<div className="my-6">{lotCards}</div>)}
-        <NavBar location='app' />
-        </div>
+  return (
+    <div className='flex flex-col items-center min-h-screen bg-gray-500'>
+      <Header />
+      {loading ? <LoadingWheel /> :
+        <div className="flex flex-col items-center w-full sm:flex-row sm:justify-center sm:items-center m-2 sm:p-0">
+          <Map lots={lots} />
+          <div className="flex flex-col items-center max-w-full mt-8">
+            {lotCards}
+          </div>
+        </div>}
+      <NavBar location='app' />
+    </div>
 
-    )
+  )
 }
 
 

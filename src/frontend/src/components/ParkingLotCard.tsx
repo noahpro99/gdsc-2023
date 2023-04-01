@@ -1,49 +1,32 @@
 import React from 'react'
 import { Lot } from '../types'
-
+import { Link } from 'react-router-dom'
 
 const ParkingLotCard = ({ lot }: { lot: Lot }) => {
-    return (
-        <div className='bg-white shadow rounded-lg overflow-hidden m-4 w-96'>
-            <div className='px-4 py-5 sm:px-6'>
-                <h3 className='text-lg leading-6 font-medium text-gray-900'>
-                    {lot.name}
-                </h3>
-                <p className='mt-1 max-w-2xl text-sm text-gray-500'>
-                    {lot.address}
-                </p>
-            </div>
-            <div className='border-t border-gray-200'>
-                <dl>
-                    <div className='bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
-                        <dt className='text-sm font-medium text-gray-500'>Description</dt>
-                        <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
-                            {lot.description}
-                        </dd>
-                    </div>
-                    <div className='bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
-                        <dt className='text-sm font-medium text-gray-500'>Price</dt>
-                        <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
-                            ${lot.price}
-                        </dd>
-                    </div>
-                    <div className='bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
-                        <dt className='text-sm font-medium text-gray-500'>Rating</dt>
-                        <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
-                            {lot.rating}
-                        </dd>
-                    </div>
-                    <div className='bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6'>
-                        <dt className='text-sm font-medium text-gray-500'>Spots</dt>
-                        <dd className='mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2'>
-                            {lot.spots}
-                        </dd>
-                    </div>
-                </dl>
-            </div>
+  return (
+    <Link to={`/lots/${lot.id}`}>
+      <div className="flex flex-col justify-between shadow rounded-lg overflow-hidden m-4 border border-gray-200 bg-white hover:shadow-lg hover:scale-105 transition duration-300 ease-in-out">
+        <div className="flex flex-row items-center justify-between p-4 border-b border-gray-200">
+          <h1 className="text-xl font-semibold text-gray-900">{lot.name}</h1>
+          <p className="text-sm text-gray-500">{lot.address}</p>
+        </div >
+        <div className="flex flex-wrap justify-between p-4 border-t border-gray-200">
+          <div className="flex items-center px-4">
+            <span className="text-sm font-medium text-gray-500 mr-2">Price:</span>
+            <span className="text-sm font-semibold text-gray-900">${lot.price}</span>
+          </div>
+          <div className="flex items-center px-4">
+            <span className="text-sm font-medium text-gray-500 mr-2">Rating:</span>
+            <span className="text-sm font-semibold text-gray-900">{lot.rating}/5</span>
+          </div>
+          <div className="flex items-center px-4">
+            <span className="text-sm font-medium text-gray-500 mr-2">Spots:</span>
+            <span className="text-sm font-semibold text-gray-900">{lot.spots}</span>
+          </div>
         </div>
-
-    )
+      </div >
+    </Link>
+  )
 }
 
 export default ParkingLotCard

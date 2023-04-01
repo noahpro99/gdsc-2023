@@ -9,6 +9,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Profile from './pages/Profile';
 import Signup from './pages/Signup';
 import LotDetails from './pages/LotDetails';
+import NewLot from './pages/NewLot';
 
 
 const root = ReactDOM.createRoot(
@@ -51,9 +52,15 @@ root.render(
             element={<Profile />}
           />
           <Route
-            path='/lot/:id'
+            path='/lots/:id'
             element={
               <LotDetails />
+            }
+          />
+          <Route
+            path='/register-lot'
+            element={
+              <NewLot />
             }
           />
 

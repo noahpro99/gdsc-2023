@@ -1,12 +1,13 @@
 .map-container {
     width: 100%;
-    height: 600px;
+    height: 570px;
     border-radius: 30px;
 }
 
 
 .map {
+    margin: 2rem;
     width: 85%;
-    height: 600px;
+    height: 85%;
     border-radius: 30px;
 }
