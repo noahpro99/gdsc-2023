@@ -1,0 +1,5 @@
+# R for data science
+FROM r-base
+WORKDIR /app
+COPY . .
+CMD ["Rscript", "myscript.R"]

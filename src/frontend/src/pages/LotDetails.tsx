@@ -102,6 +102,34 @@ const LotDetails = () => {
               <div className="text-xl font-bold mb-4">${lot?.price}</div>}
             <div className="text-lg mb-4">{lot?.description}</div>
           </div>
+
+
+          {/* small graph of the forecasts example underlying data : [16, 50, 60, 40, 30] */}
+          {/* make using a bar graph of divs */}
+
+          <div className="flex flex-row justify-center items-end">
+            <div className={`flex flex-col items-center justify-end w-1/5 m-2 bg-gray-300 rounded-lg shadow-md`}
+              style={{ height: `${lot.spots / 2}rem` }}
+            >
+              <div className="text-lg font-bold">{lot.spots / Math.max(...lot?.forecasts) * 5}</div>
+              <div className="text-sm">Current</div>
+            </div>
+            {lot?.forecasts.map((forecast, index) => {
+              let style = `flex flex-col items-center justify-end w-1/5 m-2 bg-gray-300 rounded-lg shadow-md`
+              return (
+                <div className={style}
+                  style={{ height: `${forecast / Math.max(...lot?.forecasts) * 5}rem` }}
+                >
+                  < div className="text-lg font-bold" > {forecast}</div>
+                  <div className="text-sm">+{index + 1}:00</div>
+                </div>
+
+              )
+            })}
+          </div>
+
+
+
           <div className="flex justify-center">
             <button
               className="px-4 py-2 m-4 text-black font-semibold bg-orange-500 rounded hover:bg-gray-700"
