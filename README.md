@@ -12,6 +12,8 @@ Our team chose a microservices architecture for our solution. The backend was im
 
 Our application has a simple, easy to use interface. Users are immediately presented with a Google Maps interface that allows them to view parking lot locations in their local area. Information regarding each parking lot is displayed, namely the available spots in the parking lot. Additional information such as parking cost is also displayed. At the moment we are able to analyze historical parking data and generate forecasts about the occupancy at the lot going into the future.
 
+![](Rplot.png)
+
 ## Scalability / Next Steps
 
 Our next steps involve integrating an interactive version of this forecasting information to the frontend, experimenting with more powerful machine learning time series models and expanding to mobile platforms.
